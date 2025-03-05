@@ -3,15 +3,15 @@
 ![Website Preview](https://via.placeholder.com/1200x600.png?text=Website+Preview)
 
 ## 🌟 About the Website
-This is a **modern portfolio website** built using **Framer**. It showcases my projects, skills, and contact details.
+This is my **personal portfolio website**, showcasing my projects, skills, and contact details.
 
 ## 🔗 Live Demo
 👉 [Visit My Website](https://yourwebsite.com)
 
 ## 🛠️ Tech Stack
-- 🖥️ **Framer** (No-code website builder)
-- 🎨 **Custom CSS & Animations**
-- 🚀 **Deployed using Render**
+- 🌐 **HTML, CSS, JavaScript**
+- 🎨 **Custom Animations & Styling**
+- 🚀 **Deployed using Render or Other Hosting Services**
 
 ## 📷 Screenshots
 ### 📱 Mobile View  
