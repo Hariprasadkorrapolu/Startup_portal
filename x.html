@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartupHub</title>
+    <link rel="stylesheet" href="x.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">StartupHub</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('launch')">Launch Startup</a></li>
+            <li><a href="#" onclick="showSection('startups')">Startups</a></li>
+            <li><a href="#" onclick="showSection('investors')">Investors</a></li>
+            <li><a href="#" onclick="showSection('incubation')">Incubation Centers</a></li>
+            <li><a href="#" onclick="showSection('submit-pitch')">Submit Pitch</a></li>
+            <li><a href="#" onclick="showSection('track-progress')">Track Progress</a></li>
+            <li><a href="#" onclick="showSection('login-signup')">Login / Signup</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Where Startups Meet<br>Opportunity</h1>
+        <p>Connect with investors, showcase your startup, and track your journey to success.</p>
+        <div class="button-group">
+            <button class="primary-btn" onclick="showSection('submit-pitch')">Submit Your Pitch</button>
+            <button class="secondary-btn" onclick="showSection('startups')">Browse Startups</button>
+        </div>
+    </section>
+
+    <!-- Feature Cards Section -->
+    <section class="features">
+        <div class="card" onclick="showSection('launch')">
+            <span class="icon">🚀</span>
+            <h3>Launch Your Startup</h3>
+            <p>Register your startup and showcase it to potential investors.</p>
+        </div>
+        <div class="card" onclick="showSection('investors')">
+            <span class="icon">👥</span>
+            <h3>Connect with Investors</h3>
+            <p>Network with verified investors interested in your industry.</p>
+        </div>
+        <div class="card" onclick="showSection('track-progress')">
+            <span class="icon">📊</span>
+            <h3>Track Progress</h3>
+            <p>Monitor your application status and receive updates.</p>
+        </div>
+    </section>
+
+    <!-- Login & Signup Section -->
+    <section id="login-signup" class="hidden">
+        <h2>Login / Signup</h2>
+        <div class="login-signup-form">
+            <label for="role">Select Role:</label>
+            <select id="role" onchange="toggleRoleFields()">
+                <option value="investor">Investor</option>
+                <option value="entrepreneur">Entrepreneur</option>
+                <option value="incubator">Incubator</option>
+            </select>
+
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <input type="password" id="password" placeholder="Password" required>
+
+            <div id="startupFields" class="hidden">
+                <input type="text" placeholder="Startup Name">
+                <textarea placeholder="Describe your startup"></textarea>
+            </div>
+
+            <div id="investorFields" class="hidden">
+                <input type="text" placeholder="Investment Focus">
+                <textarea placeholder="Portfolio Details"></textarea>
+            </div>
+
+            <div id="incubatorFields" class="hidden">
+                <input type="text" placeholder="Incubation Center Name">
+                <textarea placeholder="Support Services Offered"></textarea>
+            </div>
+
+            <button onclick="handleAuth()">Submit</button>
+        </div>
+    </section>
+
+<!-- Startup Registration Form -->
+<section id="launch" class="hidden">
+    <h2>Submit Your Startup Idea</h2>
+    <form id="startup-form" onsubmit="submitStartup(event)">
+        <input type="text" id="startup-name" placeholder="Startup Name" required>
+        <input type="text" id="industry" placeholder="Industry" required>
+        <textarea id="startup-description" placeholder="Describe your startup idea" required></textarea>
+        <button type="submit">Submit Startup</button>
+    </form>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden">
+        <p>Your startup has been submitted successfully!</p>
+        <button onclick="showSection('startups')">View Startups</button>
+    </div>
+</section>
+
+<!-- Startups List Section -->
+<section id="startups" class="hidden">
+    <h2>Startups</h2>
+    <div id="startups-list" class="cards-container">
+        <!-- Submitted startup will appear here -->
+    </div>
+</section>
+
+
+
+    
+<section id="submit-pitch" class="hidden">
+    <h2>Submit Your Pitch</h2>
+    <form id="pitch-form" enctype="multipart/form-data" onsubmit="submitPitch(event)">
+        <input type="text" id="pitch-title" placeholder="Pitch Title" required>
+        <textarea id="pitch-description" placeholder="Describe your pitch" required></textarea>
+        <input type="number" id="expected-investment" placeholder="Expected Investment ($)" required>
+        <input type="file" id="pitch-file" name="pitch-file" multiple required>
+        <button type="submit">Submit Pitch</button>
+    </form>
+
+    <!-- Success Message -->
+    <div id="success-message" class="hidden">
+        <p>Your pitch has been submitted successfully!</p>
+        <p>Uploaded File(s):</p>
+        <div id="uploaded-files"></div>
+    </div>
+
+    <!-- Live Pitching Section -->
+    <h2>Live Pitching Session</h2>
+    <p>Join a live session to pitch your startup to investors in real time.</p>
+    <button onclick="startLivePitch()">Join Live Pitch</button>
+</section>
+
+
+    <!-- Investors List (Brief Info) -->
+    <section id="investors" class="hidden">
+        <h2>Investors</h2>
+        <div class="search-container">
+            <input type="text" id="investor-search" placeholder="Search investors..." onkeyup="filterInvestors()">
+        </div>
+        
+        <div class="cards-container">
+            <!-- Investor Cards -->
+            <div class="card angel-investor" onclick="showInvestorDetails('john-doe')">
+                🔹 <strong>John Doe</strong> - Angel Investor (Tech & AI)
+                <p>John has invested in multiple successful startups focusing on AI and machine learning.</p>
+            </div>
+            <div class="card vc-partner" onclick="showInvestorDetails('jane-smith')">
+                🔹 <strong>Jane Smith</strong> - VC Partner (SaaS & Fintech)
+                <p>Jane specializes in SaaS products and fintech innovations, with a keen eye for disruptive technologies.</p>
+            </div>
+            <div class="card startup-mentor" onclick="showInvestorDetails('mark-johnson')">
+                🔹 <strong>Mark Johnson</strong> - Startup Mentor
+                <p>Mark has helped over 50 startups scale and refine their business models.</p>
+            </div>
+            <div class="card angel-investor" onclick="showInvestorDetails('sarah-lee')">
+                🔹 <strong>Sarah Lee</strong> - Angel Investor (HealthTech)
+                <p>Sarah is passionate about improving healthcare through technology, with a focus on HealthTech startups.</p>
+            </div>
+            <div class="card vc-partner" onclick="showInvestorDetails('paul-thomas')">
+                🔹 <strong>Paul Thomas</strong> - VC Partner (E-commerce & Retail)
+                <p>Paul has an extensive portfolio of e-commerce ventures, helping startups grow in the retail sector.</p>
+            </div>
+            <div class="card startup-mentor" onclick="showInvestorDetails('emma-wilson')">
+                🔹 <strong>Emma Wilson</strong> - Startup Mentor
+                <p>Emma has mentored several startups to success, with expertise in go-to-market strategies and customer acquisition.</p>
+            </div>
+        </div>
+    
+        <!-- Investor Details Section (For showing detailed investor info) -->
+        <section id="investor-details" class="hidden">
+            <h2 id="investor-name"></h2>
+            <p id="investor-bio"></p>
+            <p><strong>Invested in:</strong> <span id="invested-startups"></span></p>
+            <p><strong>Interested in:</strong> <span id="investment-sectors"></span></p>
+            <p><strong>Contact:</strong> <span id="investor-contact"></span></p>
+            <a id="investor-portfolio" href="#" target="_blank">View Portfolio</a>
+            <br>
+            <button onclick="showSection('investors')">Back to Investors</button>
+        </section>
+    </section>
+    
+    
+    
+    
+
+
+    <!-- Incubation Centers -->
+    <section id="incubation" class="hidden">
+        <h2>Incubation Centers</h2>
+        
+        <div class="cards-container">
+            <!-- Incubation Center 1 -->
+            <div class="card">
+                🏢 <strong>InnovateHub</strong> - Tech Startup Incubator
+                <p>InnovateHub is a leading incubation center designed to nurture early-stage tech startups. They offer access to funding, mentorship, and a network of industry experts.</p>
+                <ul>
+                    <li>Seed funding options available</li>
+                    <li>Startup mentoring from experienced entrepreneurs</li>
+                    <li>Networking events with investors and professionals</li>
+                </ul>
+            </div>
+    
+            <div class="card">
+                🏢 <strong>StartupNest</strong> - AI & ML Focused Center
+                <p>StartupNest specializes in supporting startups in the AI and ML fields. They provide technical resources, access to cutting-edge research, and tailored mentoring.</p>
+                <ul>
+                    <li>Focus on AI, ML, and Data Science technologies</li>
+                    <li>Collaboration with universities and research labs</li>
+                    <li>Workshops on AI/ML trends and technologies</li>
+                </ul>
+            </div>
+    
+            <div class="card">
+                🏢 <strong>GrowthForge</strong> - Business Accelerator
+                <p>GrowthForge is a business accelerator that helps startups scale quickly through strategic partnerships, marketing support, and funding opportunities.</p>
+                <ul>
+                    <li>Business growth strategies and execution support</li>
+                    <li>Market research and customer acquisition guidance</li>
+                    <li>Access to a network of venture capitalists and angel investors</li>
+                </ul>
+            </div>
+    
+            <div class="card">
+                🏢 <strong>TechBoosters</strong> - Cloud & DevOps Focused Incubator
+                <p>TechBoosters specializes in startups focused on cloud computing, DevOps, and SaaS. They offer access to top cloud services and DevOps experts.</p>
+                <ul>
+                    <li>Hands-on workshops with AWS, Azure, and Google Cloud</li>
+                    <li>Mentorship from DevOps engineers</li>
+                    <li>Collaborations with SaaS companies for scaling</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                🏢 <strong>FutureMinds</strong> - IoT & Robotics Incubator
+                <p>FutureMinds supports IoT and robotics startups by providing prototyping labs, hardware resources, and industry connections to help develop innovative products.</p>
+                <ul>
+                    <li>Prototyping and testing facilities</li>
+                    <li>Expert consultations on hardware and IoT solutions</li>
+                    <li>Partnerships with hardware manufacturers</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Track Progress Section -->
+    <section id="track-progress" class="hidden">
+        <h2>Track Your Application</h2>
+        <p>Your application is currently under review. Please check back later for updates.</p>
+    </section>
+
+    <script src="x.js"></script>
+</body>
+
+</html>
