@@ -35,13 +35,15 @@ A dashboard where registered startups can manage their profiles, update company 
 
 ### 💰 Investor Page  
 Investors can browse startup profiles, explore funding opportunities, and connect with promising businesses based on industry and growth potential.  
-![Investor Page]()
+![Investor Page](https://github.com/Hariprasadkorrapolu/Startup_portal/blob/6f481a17039d5a5328b9cf23e15334541386c00b/IMG-20250305-WA0028.jpg)
 
 ---
 
 ### 🏢 Incubation Center Page  
 This section provides a list of incubation centers that support startups with mentorship, office space, and growth resources.
-(https://github.com/Hariprasadkorrapolu/Startup_portal/blob/d55b02172cd9a1fbb66a259606e81a9f8eecc4c1/IMG-20250305-WA0029.jpg)
+![Incubation page]
+(_https://github.com/Hariprasadkorrapolu/Startup_portal/blob/6f481a17039d5a5328b9cf23e15334541386c00b/IMG-20250305-WA0029.jpg)
+---
 
 ### 📌 Track Your Application Page  
 Startups can track the status of funding applications, incubation requests, and other submissions made within the portal.  
