@@ -41,8 +41,7 @@ Investors can browse startup profiles, explore funding opportunities, and connec
 
 ### 🏢 Incubation Center Page  
 This section provides a list of incubation centers that support startups with mentorship, office space, and growth resources.
-![Incubation page]
-(_https://github.com/Hariprasadkorrapolu/Startup_portal/blob/6f481a17039d5a5328b9cf23e15334541386c00b/IMG-20250305-WA0029.jpg)
+![Incubation Center Page](https://github.com/Hariprasadkorrapolu/Startup_portal/blob/6f481a17039d5a5328b9cf23e15334541386c00b/IMG-20250305-WA0029.jpg)
 ---
 
 ### 📌 Track Your Application Page  
